@@ -1,6 +1,6 @@
 # spiral
 
-<https://i574n.github.io/spiral>
+<https://fc1943s.github.io/spiral>
 
 [![깃허브 코드스페이스](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=main&repo=812485896)
 
@@ -19,7 +19,7 @@
 Clone the repository:
 
 ```powershell
-git clone https://github.com/i574n/spiral.git
+git clone https://github.com/fc1943s/spiral.git
 ```
 
 Navigate to the directory, initialize dependencies and build the project:
@@ -42,7 +42,7 @@ Documentation
 <td>
 
 - Repository file tree (HTML)  
-<https://i574n.github.io/spiral>
+<https://fc1943s.github.io/spiral>
 
 </td>
 </tr>
@@ -56,16 +56,16 @@ Samples
 <td>
 
 - Spiral CLI notebook  
-<https://i574n.github.io/spiral/apps/spiral/spiral.dib.html>
+<https://fc1943s.github.io/spiral/apps/spiral/spiral.dib.html>
 
 - Spiral compiler notebook  
-<https://i574n.github.io/spiral/apps/compiler/spiral_compiler.dib.html>
+<https://fc1943s.github.io/spiral/apps/compiler/spiral_compiler.dib.html>
 
 - Parsing library  
-<https://i574n.github.io/spiral/lib/spiral/parsing.dib.html>
+<https://fc1943s.github.io/spiral/lib/spiral/parsing.dib.html>
 
 - Physics notebook from the "Learn Physics with Functional Programming" book  
-<https://i574n.github.io/spiral/lib/spiral/physics.dib.html>
+<https://fc1943s.github.io/spiral/lib/spiral/physics.dib.html>
 
 </td>
 </tr>
@@ -94,8 +94,8 @@ Social
 
 ## Contributing
 
-Contributions are welcome! Please see the [CONTRIBUTING.md](https://github.com/i574n/.github/blob/main/CONTRIBUTING.md) for guidelines.
+Contributions are welcome! Please see the [CONTRIBUTING.md](https://github.com/fc1943s/.github/blob/main/CONTRIBUTING.md) for guidelines.
 
 ## License
 
-This project is licensed under the AGPLv3 License. See the [LICENSE](https://github.com/i574n/spiral/blob/main/LICENSE) file for details.
+This project is licensed under the AGPLv3 License. See the [LICENSE](https://github.com/fc1943s/spiral/blob/main/LICENSE) file for details.
