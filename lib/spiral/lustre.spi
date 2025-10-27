@@ -1,0 +1,138 @@
+/// # lustre
+
+/// ## lustre
+
+/// ### attribute
+nominal attribute t =
+    `(
+        backend_switch `(()) `({}) {
+            Gleam = (fun () => global "import lustre/internals/vdom") : () -> ()
+        }
+        $'' : $'vdom.Attribute(`t)'
+    )
+
+/// ### element
+nominal element t =
+    `(
+        backend_switch `(()) `({}) {
+            Gleam = (fun () => global "import lustre/element") : () -> ()
+        }
+        $'' : $'element.Element(`t)'
+    )
+
+/// ### text
+inl text forall t. (text : string) : element t =
+    global "import lustre/element/html"
+    $'element.text(!text)'
+
+/// ### on_click
+inl on_click forall t. (msg : t) : attribute t =
+    global "import lustre/event"
+    $'event.on_click(!msg)'
+
+/// ### style
+inl style forall t. (styles : list (string * string)) : attribute t =
+    global "import lustre/attribute"
+    inl styles = styles |> listm'.box
+    $'attribute.style(!styles)'
+
+/// ### div
+inl div forall t. (attributes : list (attribute t)) (children : list (element t)) : element t =
+    global "import lustre/element/html"
+    inl attributes = attributes |> listm'.box
+    inl children = children |> listm'.box
+    $'html.div(!attributes, !children)'
+
+/// ### p
+inl p forall t. (attributes : list (attribute t)) (children : list (element t)) : element t =
+    global "import lustre/element/html"
+    inl attributes = attributes |> listm'.box
+    inl children = children |> listm'.box
+    $'html.p(!attributes, !children)'
+
+/// ### button
+inl button forall t. (attributes : list (attribute t)) (children : list (element t)) : element t =
+    global "import lustre/ui/button"
+    inl attributes = attributes |> listm'.box
+    inl children = children |> listm'.box
+    $'button.button(!attributes, !children)'
+
+/// ### centre
+inl centre forall t. (attributes : list (attribute t)) (children : element t) : element t =
+    global "import lustre/ui/centre"
+    inl attributes = attributes |> listm'.box
+    $'centre.centre(!attributes, !children)'
+
+/// ### app
+nominal app model msg = $'lustre.App(`model, `model, `msg)'
+
+/// ### simple
+inl simple forall model msg.
+    (init : model -> model)
+    (update : model * msg -> model)
+    (view : model -> element msg)
+    : app model msg
+    =
+    global "import lustre"
+    $'lustre.simple(!init, fn (a, b) { !update(\#(a, b)) }, !view)'
+
+/// ### start
+inl start id app =
+    $'let assert Ok(_) = lustre.start(!app, !id, 0)' : ()
+
+/// ## counter
+
+/// ### model
+type model = int
+
+/// ### init
+inl init initial_count : model =
+    if initial_count < 0
+    then 0
+    else initial_count
+
+/// ### msg
+union msg =
+    | Incr
+    | Decr
+
+/// ### update
+inl update n (model, msg) =
+    match msg with
+    | Incr => model + n
+    | Decr => model - n
+
+/// ### view
+inl view model =
+    div [
+        style [
+            "display", "flex"
+        ]
+    ] [
+        div [
+            style [
+                "display", "flex"
+                "flex-direction", "column"
+            ]
+        ] [
+            button [
+                on_click Incr
+            ] [
+                text "+"
+            ]
+            p [
+                style [
+                    "text-align", "center"
+                ]
+            ] [
+                model |> sm'.obj_to_string |> text
+            ]
+            button [
+                on_click Decr
+            ] [
+                text "-"
+            ]
+        ]
+    ]
+
+/// ## tests
